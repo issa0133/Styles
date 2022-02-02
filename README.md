@@ -1,24 +1,39 @@
-# README
+# Styles
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### サイト概要
+各々のコーディネイトを投稿し、新たなStyleと出会うことのできるサイトです。
 
-Things you may want to cover:
+### サイトテーマ
+洋服のコーディネイトを参考にすることを目的としたシンプルなサイトにすることで、
+幅広く使いやすいサイトにすること。
 
-* Ruby version
+### テーマを選んだ理由
+昨今の情勢から外出が制限され、おしゃれをする機会が減ったことから
+新たに洋服を買おうという意欲が無くなってしまいました。
+また、外出する機会があっても人と会うことが制限されているなかではおしゃれをする
+意義があまりないように感じてしまうことも多々、、
+その為今回のサイトでは、
+投稿サイトとしてはできるだけシンプルに、自分の**Style**と人の**Style**を共有することで
+洋服を着ること、見ることの楽しさをシェアできるものにしたいです。
 
-* System dependencies
 
-* Configuration
+## ターゲットユーザ
+洋服が好きで、人とのつながりよりも新たな洋服との出会いを求めている方。
 
-* Database creation
+## 主な利用シーン
+新しい洋服を買いたいときや、これまでとは異なる系統のStyleを試したいと思っているときに
+気軽に活用してもらいたいです。
 
-* Database initialization
+## 設計書
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## チャレンジ要素一覧
+https://docs.google.com/spreadsheets/d/1aUbe0DzPxthdy6m7T_9u90seM7fngMN2cBfNjw-PPxA/edit#gid=566224576
 
-* Deployment instructions
+## 開発環境
+- OS：Linux/UNIX
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* ...
