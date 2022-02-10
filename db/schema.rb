@@ -10,7 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_09_102854) do
+ActiveRecord::Schema.define(version: 2022_02_10_075303) do
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "post_image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_image_id"], name: "index_favorites_on_post_image_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
+    t.string "ancestry"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "post_comments", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "post_image_id"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_image_id"], name: "index_post_comments_on_post_image_id"
+    t.index ["user_id"], name: "index_post_comments_on_user_id"
+  end
 
   create_table "post_images", force: :cascade do |t|
     t.integer "user_id"
@@ -22,6 +48,15 @@ ActiveRecord::Schema.define(version: 2022_02_09_102854) do
     t.datetime "updated_at", null: false
     t.index ["genre_id"], name: "index_post_images_on_genre_id"
     t.index ["user_id"], name: "index_post_images_on_user_id"
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followed_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["followed_id"], name: "index_relationships_on_followed_id"
+    t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
   create_table "users", force: :cascade do |t|
