@@ -1,0 +1,12 @@
+<h2>新着投稿</h2>
+
+<% @post_images.each do |post_image| %>
+<div>
+  <%= link_to post_image_path(post_image.id) do %>
+    <%= attachment_image_tag post_image, :image, size: "120x100" %>
+  <% end %>
+  <%= post_image.title %>
+  <%= post_image.genre.name %>
+  <%= post_image.user.name %>
+</div>
+<% end %>

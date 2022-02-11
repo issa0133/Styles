@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_10_075303) do
+ActiveRecord::Schema.define(version: 2022_02_11_021900) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 2022_02_10_075303) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
-    t.string "ancestry"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
