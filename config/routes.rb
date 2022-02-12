@@ -8,12 +8,12 @@ Rails.application.routes.draw do
   get 'about' => 'homes#about'
   get 'search' => 'searches#search'
 
-  resources :post_images, only: [:index, :new, :create, :show,] do
+  resources :post_images, only: [:index, :new, :create, :show, :destroy] do
     collection do
       get :follower_post
     end
     resources :post_comments, only: [:create, :destroy]
-    resource :post_favorites, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
   end
 
   resources :users, only: [:show, :edit, :update] do

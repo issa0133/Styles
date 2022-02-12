@@ -1,6 +1,6 @@
 <h1>マイページ</h1>
 <div>
-  <%= attachment_image_tag @user, :image, size: "200x200", format: "jpg", fallback: "no_image.jpg" %>
+  <%= attachment_image_tag @user, :image, size: "200x200", fallback: "no_image.jpeg" %>
   <p><%= @user.name %></p>
   <p><%= @user.introduction %></p>
   <% if @user.id == current_user.id %>

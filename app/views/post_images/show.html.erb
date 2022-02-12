@@ -8,4 +8,32 @@
   <% if @post_image.user == current_user %>
   <%= link_to "削除" , post_image_path(@post_image), method: :delete %>
   <% end %>
+  <% if @post_image.favorited_by?(current_user) %>
+    <%= link_to post_image_favorites_path(@post_image), method: :delete do %>
+      <i class="fas fa-heart" style="color:red;"><%= @post_image.favorites.count %></i>
+    <% end %>
+  <% else %>
+    <%= link_to post_image_favorites_path(@post_image), method: :post do %>
+      <i class="fas fa-heart" style="color:blue;"><%= @post_image.favorites.count %></i>
+    <% end %>
+  <% end %>
+</div>
+
+<div>
+  <p>コメント <%= @post_image.post_comments.count %></p>
+  <p><% @post_image.post_comments.each do |post_comment| %></p>
+    <p><%= attachment_image_tag post_comment.user, :image, size: "50x50" %></p>
+    <%= post_comment.comment %><%= post_comment.created_at.strftime("%Y/%m/%d") %>
+    <% if post_comment.user == current_user %>
+    <div>
+      <%= link_to "削除", post_image_post_comment_path(post_comment.post_image, post_comment), method: :delete %>
+    </div>
+    <% end %>
+  <% end %>
+</div>
+<div>
+<%= form_with(model: [@post_image, @post_comment], local: true) do |f| %>
+  <%= f.text_area :comment, rows:"5", placeholder: "コメントを記入" %>
+  <%= f.submit "送信する" %>
+<% end %>
 </div>
