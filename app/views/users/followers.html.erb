@@ -1,0 +1,21 @@
+<h2>フォロー中のユーザー</h2>
+<% @users.each do |user| %>
+  <%= attachment_image_tag user, :image, size: "50x50", fallback: "no_image.jpeg" %>
+  <%= link_to user_path(user) do %>
+    <%= user.name %>
+  <% end %>
+  <%= link_to user.followers.count, followers_user_path(user) %>フォロー
+  <%= link_to user.followeds.count, followeds_user_path(user) %>フォロワー
+
+  <% if user != current_user %>
+    <% if user.is_followed_by?(current_user) %>
+      <%= link_to user_relationships_path(user), method: :delete do %>
+        <button class="btn btn-secondary">フォロー中</button>
+      <% end %>
+    <% else %>
+      <%= link_to user_relationships_path(user), method: :post do %>
+        <button class="btn btn-light">フォローする</button>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

@@ -16,16 +16,6 @@
     <%= attachment_image_tag post_image.user, :image, size: "50x50", fallback: "no_image.jpeg" %>
   <% end %>
   <%= post_image.user.name %>
-  <% if post_image.user != current_user %>
-    <% if post_image.user.is_followed_by?(current_user) %>
-      <%= link_to user_relationships_path(post_image.user), method: :delete do %>
-        <button class="btn btn-secondary">フォロー中</button>
-      <% end %>
-    <% else %>
-      <%= link_to user_relationships_path(post_image.user), method: :post do %>
-        <button class="btn btn-light">フォローする</button>
-      <% end %>
-    <% end %>
-  <% end %>
+ 
 </div>
 <% end %>
