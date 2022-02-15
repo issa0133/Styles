@@ -2,15 +2,9 @@
   <div>
     <%= attachment_image_tag @post_image, :image, size: "360x240" %>
   </div>
-  <% if @post_image.favorited_by?(current_user) %>
-    <%= link_to post_image_favorites_path(@post_image), method: :delete do %>
-      <i class="fas fa-heart" style="color:red;"><%= @post_image.favorites.count %></i>
-    <% end %>
-  <% else %>
-    <%= link_to post_image_favorites_path(@post_image), method: :post do %>
-      <i class="fas fa-heart" style="color:blue;"><%= @post_image.favorites.count %></i>
-    <% end %>
-  <% end %>
+  <div id="favorite_buttons_<%= @post_image.id %>">
+    <%= render "favorites/favorite", obj: @post_image %>
+  </div>
   <p>コメント <%= @post_image.post_comments.count %></p>
   <div>
   <%= link_to user_path(@post_image.user) do %>
@@ -18,8 +12,10 @@
   <% end %>
   </div>
   <%= @post_image.user.name %>
-  <%= render "users/follow_system", obj: @post_image.user %>
- 
+  <% if @post_image.user != current_user %>
+    <%= render "users/follow_system", obj: @post_image.user %>
+  <% end %>
+
   <p><%= @post_image.title %></p>
   <p><%= @post_image.genre.name %></p>
   <p><%= @post_image.introduction %></p>
@@ -29,20 +25,9 @@
   <% end %>
 </div>
 
-<div>
-  <p><% @post_image.post_comments.each do |post_comment| %></p>
-    <p><%= attachment_image_tag post_comment.user, :image, size: "50x50" %></p>
-    <%= post_comment.comment %><%= post_comment.created_at.strftime("%Y/%m/%d") %>
-    <% if post_comment.user == current_user %>
-    <div>
-      <%= link_to "削除", post_image_post_comment_path(post_comment.post_image, post_comment), method: :delete %>
-    </div>
-    <% end %>
-  <% end %>
+<div id="comment_area">
+  <%= render "post_comments/comment", post_image: @post_image %>
 </div>
-<div>
-<%= form_with(model: [@post_image, @post_comment], local: true) do |f| %>
-  <%= f.text_area :comment, rows:"5", placeholder: "コメントを記入" %>
-  <%= f.submit "送信する" %>
-<% end %>
+<div class="comment_form">
+  <%= render "post_comments/form", post_image: @post_image, post_comment: @post_comment %>
 </div>
