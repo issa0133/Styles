@@ -8,12 +8,15 @@ class PostImagesController < ApplicationController
     @post_image = PostImage.new(post_image_params)
     @post_image.user_id = current_user.id
     @post_image.save
-    redirect_to request.referrer
+    redirect_to post_images_path
 
   end
 
   def index
-    @post_images = PostImage.all
+    @post_images = PostImage.order("created_at DESC")
+    @genres = Genre.all
+    
+
   end
 
   def show
@@ -25,12 +28,13 @@ class PostImagesController < ApplicationController
   def destroy
     @post_image = PostImage.find(params[:id])
     @post_image.destroy
-    redirect_to request.referrer
+    redirect_to post_images_path
 
   end
 
   def follower_post
     @post_images = PostImage.order("created_at DESC").where(user_id: [current_user.follower_ids])
+    @genres = Genre.all
   end
 
 
