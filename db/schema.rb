@@ -17,8 +17,6 @@ ActiveRecord::Schema.define(version: 2022_02_11_021900) do
     t.integer "post_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["post_image_id"], name: "index_favorites_on_post_image_id"
-    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -33,8 +31,6 @@ ActiveRecord::Schema.define(version: 2022_02_11_021900) do
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["post_image_id"], name: "index_post_comments_on_post_image_id"
-    t.index ["user_id"], name: "index_post_comments_on_user_id"
   end
 
   create_table "post_images", force: :cascade do |t|
@@ -45,8 +41,6 @@ ActiveRecord::Schema.define(version: 2022_02_11_021900) do
     t.text "introduction"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["genre_id"], name: "index_post_images_on_genre_id"
-    t.index ["user_id"], name: "index_post_images_on_user_id"
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -54,8 +48,6 @@ ActiveRecord::Schema.define(version: 2022_02_11_021900) do
     t.integer "followed_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["followed_id"], name: "index_relationships_on_followed_id"
-    t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
   create_table "users", force: :cascade do |t|
