@@ -1,0 +1,41 @@
+    <header class="container-fluid">
+      <nav class="navbar navbar-lg navbar-dark bg-dark">
+        <a class="navbar-brand mx-auto", data-turbolinks="false", href="/"><%= image_tag('logo.jpg', size: '180x140') %></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerlist" aria-controls="navbarTogglerlist" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerlist">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0 mb-1">
+          <% if user_signed_in? %>
+            <li class="h4 ml-auto">
+              <%= link_to "投稿一覧", post_images_path, class: "text-white" %>
+            </li>
+            <li class="h4 ml-auto">
+              <%= link_to "新規投稿", new_post_image_path, class: "text-white" %>
+            </li>
+            <li class="h4 ml-auto">
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete,  class: "text-white" %>
+            </li>
+            <li class="h4 ml-auto">
+              <%= link_to "マイページ", user_path(current_user.id), class: "text-white" %>
+            </li>
+          <% else %>
+            <li class="h4 ml-auto">
+              <%= link_to "HOME", root_path, data: {"turbolinks" => false}, class: "text-white" %>
+            </li>
+            <li class="h4 ml-auto">
+              <%= link_to "ABOUT", about_path, data: {"turbolinks" => false}, class: "text-white" %>
+            </li>
+            <li class="h4 ml-auto">
+              <%= link_to "ログイン", new_user_session_path, class: "text-white" %>
+            </li>
+            <li class="h4 ml-auto">
+              <%= link_to "新規登録", new_user_registration_path, class: "text-white" %>
+            </li>
+        <% end %>
+          </ul>
+          <%= render "searches/form" %>
+        </div>
+      </nav>
+    </header>

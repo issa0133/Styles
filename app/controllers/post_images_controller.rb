@@ -13,9 +13,9 @@ class PostImagesController < ApplicationController
   end
 
   def index
-    @post_images = PostImage.order("created_at DESC")
+    @post_images = PostImage.page(params[:page]).reverse_order
     @genres = Genre.all
-    
+
 
   end
 

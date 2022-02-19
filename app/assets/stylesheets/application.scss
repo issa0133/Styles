@@ -16,3 +16,50 @@
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
+
+ *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+ }
+//スライドショーの設定
+ #slideshow-box{
+  height: 600px;
+  width: 1000px;
+  margin:auto;
+
+ }
+
+ .slideshow1{
+  background-image: url(slideshow1.jpg);
+ }
+ .slideshow2{
+  background-image: url(slideshow2.jpg);
+ }
+ .slideshow3{
+  background-image: url(slideshow3.jpg);
+ }
+ .slideshow4{
+  background-image: url(slideshow4.jpg);
+ }
+ .slideshow5{
+  background-image: url(slideshow5.jpg);
+ }
+ .slideshow6{
+  background-image: url(slideshow6.jpg);
+ }
+ .slideshow7{
+  background-image: url(slideshow7.jpg);
+ }
+ .slideshow8{
+  background-image: url(slideshow8.jpg);
+ }
+
+//リンクの文字色、ホバー時の文字色を黒で統一
+.link{
+ text-decoration: none;
+ color: black;
+}
+a:hover{
+ color: black;
+}
