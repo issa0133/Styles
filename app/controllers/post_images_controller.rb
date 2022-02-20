@@ -33,7 +33,7 @@ class PostImagesController < ApplicationController
   end
 
   def follower_post
-    @post_images = PostImage.order("created_at DESC").where(user_id: [current_user.follower_ids])
+    @post_images = PostImage.page(params[:page]).reverse_order.where(user_id: [current_user.follower_ids])
     @genres = Genre.all
   end
 

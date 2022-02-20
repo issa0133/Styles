@@ -3,7 +3,7 @@ class SearchesController < ApplicationController
     @model = params[:model]
     @word = params[:word]
     @post_image = search_for(@model, @word)
-    @post_images = @post_image.order("created_at DESC")
+    @post_images = @post_image.page(params[:page]).reverse_order
     @genres = Genre.all
     
 

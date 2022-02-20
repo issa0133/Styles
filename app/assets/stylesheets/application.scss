@@ -55,11 +55,14 @@
   background-image: url(slideshow8.jpg);
  }
 
-//リンクの文字色、ホバー時の文字色を黒で統一
+//リンクのホバー時の文字色を白で統一
 .link{
  text-decoration: none;
- color: black;
+ color: white;
 }
 a:hover{
- color: black;
+ color: white;
 }
+
+
+
