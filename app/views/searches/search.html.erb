@@ -1,1 +1,10 @@
-<%= render "post_images/index", genres: @genres, post_images: @post_images %>
+<div class="container-fuild">
+  <div class="row mx-0 py-2 justify-content-around">
+    <div class="col-lg-2">
+      <%= render "searches/genre_search", genres: @genres %>
+    </div>
+    <div class="col-lg-9">
+      <%= render "post_images/index", genres: @genres, post_images: @post_images %>
+    </div>
+  </div>
+</div>

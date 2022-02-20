@@ -1,10 +1,16 @@
-<h2>画像投稿</h2>
-<%= form_with model: @post_image, local: true do |f| %>
-  <p><%= f.attachment_field :image %></p>
-  <p><%= f.text_field :title, placeholder: "タイトル名" %></p>
-  <p><%= f.collection_select :genre_id, @genres, :id, :name, {prompt: "ジャンル"} %></p>
-  <p><%= f.text_area :introduction, placeholder: "投稿の説明" %></p>
-     <%= f.submit "新規投稿" %>
-<% end %>
-
+<div class="container">
+  <div class="row justify-content-center mt-5 border border-dark bg-light">
+　　<div class="col-md-8 my-5 align-self-center">
+      <%= form_with model: @post_image, local: true do |f| %>
+          <p><%= f.attachment_field :image %></p>
+          <p><%= f.text_field :title, placeholder: "タイトル名",class: "form-control col-10" %></p>
+          <p><%= f.collection_select :genre_id, @genres, :id, :name, {prompt: "ジャンル"}, class: "form-control col-3" %></p>
+          <p><%= f.text_area :introduction, placeholder: "投稿の説明",class: "form-control col-10", rows: 15 %></p>
+          <div class="col-md-10 text-center">
+            <%= f.submit "アップロード", class: "btn btn-outline-dark" %>
+          </div>    
+      <% end %>
+    </div>
+  </div>
+</div>
 
