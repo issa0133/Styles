@@ -1,6 +1,8 @@
-<div>
-<%= form_with(model: [post_image, post_comment], remote: true) do |f| %>
-  <%= f.text_area :comment, rows:"5", placeholder: "コメントを記入" %>
-  <%= f.submit "送信" %>
-<% end %>
+<div class="card mx-auto col-md-5 col-xl-8 pt-3 my-3 mx-4">
+  <%= form_with(model: [post_image, post_comment], remote: true) do |f| %>
+    <p><%= f.text_area :comment, rows:"10", placeholder: "コメントを記入",class: "form-control" %></p>
+    <p class="my-3 text-right">
+      <%= f.submit "送信",class: "btn btn-outline-dark" %>
+    </p>
+  <% end %>
 </div>

@@ -1,11 +1,16 @@
-<div>
+<div class="row">
   <% post_image.post_comments.each do |post_comment| %>
-    <p><%= attachment_image_tag post_comment.user, :image, size: "50x50", fallback: "no_image.jpeg" %></p>
-    <%= post_comment.comment %><%= post_comment.created_at.strftime("%Y/%m/%d") %>
-    <% if post_comment.user == current_user %>
-    <p>
-      <%= link_to "削除", post_image_post_comment_path(post_comment.post_image, post_comment), method: :delete, remote: true %>
-    </p>
-    <% end %>
+    <div class="col-lg-4 my-2 mx-2">
+      <p><%= attachment_image_tag post_comment.user, :image, size: "50x50", fallback: "no_image.jpeg" %></p>
+      <p><%= post_comment.created_at.strftime("%Y/%m/%d") %></p>
+      <p>
+        <% if post_comment.user == current_user %>
+          <%= link_to "削除", post_image_post_comment_path(post_comment.post_image, post_comment), method: :delete, remote: true,class: "btn btn-outline-danger" %>
+        <% end %>
+      </p>
+    </div>
+    <div class="col-lg-7 my-2 mx-2">
+      【コメント】<%= post_comment.comment %>
+    </div>
   <% end %>
 </div>

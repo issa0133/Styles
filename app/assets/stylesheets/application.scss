@@ -56,11 +56,22 @@
  }
 
 //リンクのホバー時の文字色を白で統一
-.link{
- text-decoration: none;
+a{
  color: white;
 }
 
 a:hover{
+ text-decoration: underline;
  color: white;
+}
+
+.post-show-image{
+ width: 400px;
+ height: 600px;
+}
+
+.post-card-image:image{
+ width: 100%;
+ height: 100%;
+ object-fit: cover;
 }

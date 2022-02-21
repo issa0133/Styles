@@ -1,33 +1,51 @@
-<div>
-  <div>
-    <%= attachment_image_tag @post_image, :image, size: "360x240" %>
+<div class="container my-5 py-5 bg-light">
+  <div class="card mx-auto col-md-5 col-xl-8 pt-3 my-3 mx-4">
+    <div>
+      <%= attachment_image_tag @post_image, :image,class: "card-img-top"; %>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-4 col-lg-3 col-xl-2">
+          <i class="fas fa-comment-dots"></i> <%= @post_image.post_comments.count %>
+        </div>
+        <div class="col-md-4 col-lg-3 col-xl-2">
+          <div id="favorite_buttons_<%= @post_image.id %>">
+            <%= render "favorites/favorite", obj: @post_image %>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-between">
+        <div class="mt-2">
+          <%= link_to user_path(@post_image.user) do %>
+            <%= attachment_image_tag @post_image.user, :image, size: "50x50", fallback: "no_image.jpeg" %>
+          <% end %>
+          <span><%= @post_image.user.name %></span>
+        </div>
+        <div class="mt-2">
+          <% if @post_image.user != current_user %>
+            <%= render "users/follow_system", obj: @post_image.user %>
+          <% end %>
+        </div>
+      </div>
+      <div class="mt-2">
+        <p>タイトル：<%= @post_image.title %></p>
+        <p>ジャンル：<%= @post_image.genre.name %></p>
+        <p>投稿説明：<%= @post_image.introduction %></p>
+        <p><%= @post_image.created_at.strftime("%Y/%m/%d") %></p>
+        <% if @post_image.user == current_user %>
+          <%= link_to "削除", post_image_path(@post_image), method: :delete, class: "btn btn-outline-danger" %>
+        <% end %>
+      </div>
+      <div class="border border-2">
+        <div id="comment_area">
+          <%= render "post_comments/comment", post_image: @post_image %>
+        </div>
+      </div>
+    </div>
   </div>
-  <div id="favorite_buttons_<%= @post_image.id %>">
-    <%= render "favorites/favorite", obj: @post_image %>
-  </div>
-  <p>コメント <%= @post_image.post_comments.count %></p>
-  <div>
-  <%= link_to user_path(@post_image.user) do %>
-    <%= attachment_image_tag @post_image.user, :image, size: "50x50", fallback: "no_image.jpeg" %>
-  <% end %>
-  </div>
-  <%= @post_image.user.name %>
-  <% if @post_image.user != current_user %>
-    <%= render "users/follow_system", obj: @post_image.user %>
-  <% end %>
-
-  <p><%= @post_image.title %></p>
-  <p><%= @post_image.genre.name %></p>
-  <p><%= @post_image.introduction %></p>
-  <p><%= @post_image.created_at.strftime("%Y/%m/%d") %></p>
-  <% if @post_image.user == current_user %>
-    <%= link_to "削除" , post_image_path(@post_image), method: :delete %>
-  <% end %>
 </div>
-
-<div id="comment_area">
-  <%= render "post_comments/comment", post_image: @post_image %>
-</div>
-<div class="comment_form">
-  <%= render "post_comments/form", post_image: @post_image, post_comment: @post_comment %>
+<div class="container py-2 my-2 bg-light">
+  <div class="comment_form">
+    <%= render "post_comments/form", post_image: @post_image, post_comment: @post_comment %>
+  </div>
 </div>

@@ -12,5 +12,14 @@
   <div class="row py-3 justify-content-center bg-dark">
     <h3 class="text-white">コーディネイト</h3>
   </div>
-  <%= render "post_images/index", genres: @genres, post_images: @post_images %>
+</div>
+<div class="container-fuild">
+  <div class="row mx-0 py-2 justify-content-center">
+    <div class="col-lg-2">
+      <%= render "searches/genre_search", genres: @genres %>
+    </div>
+    <div class="col-lg-10 pr-0">
+      <%= render "post_images/index", genres: @genres, post_images: @post_images %>
+    </div>
+  </div>
 </div>
