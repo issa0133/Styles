@@ -4,7 +4,7 @@
       <%= form_with model:@user, local: true do |f| %>
         <div class="text-center">
           <div class="profile-icon">
-            <%= attachment_image_tag @user, :image, size: "300x300", fallback: "no_image.jpeg" %>
+            <%= attachment_image_tag @user, :image, size: "300x300", fallback: "no_image.jpg" %>
           </div>
         </div>
         <p class="my-4 text-center"> <%= f.attachment_field :image %></p>
