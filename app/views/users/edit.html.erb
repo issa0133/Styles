@@ -1,9 +1,19 @@
-<div>
-  <%= form_with model:@user, local: true do |f| %>
-    <%= attachment_image_tag @user, :image, size: "360x240", fallback: "no_image.jpeg" %>
-    <p><%= f.attachment_field :image %></p>
-    <p><%= f.text_field :name, placeholder: "ユーザー名" %></p>
-    <p><%= f.text_area :introduction, placeholder: "投稿の説明" %></p>
-    <%= f.submit "変更を保存" %>
-  <% end %>
+<div class="container">
+  <div class="row justify-content-center mt-5 border border-dark bg-light">
+　　<div class="col-md-8 my-5">
+      <%= form_with model:@user, local: true do |f| %>
+        <div class="text-center">
+          <div class="profile-icon">
+            <%= attachment_image_tag @user, :image, size: "300x300", fallback: "no_image.jpeg" %>
+          </div>
+        </div>
+        <p class="my-4 text-center"> <%= f.attachment_field :image %></p>
+        <p>【ユーザー名】<%= f.text_field :name, placeholder: "ユーザー名",class: "form-control" %></p>
+        <p>【自己紹介】　<%= f.text_area :introduction, placeholder: "投稿の説明",class: "form-control", rows: 15 %></p>
+        <div class="text-center">
+          <%= f.submit "変更を保存",class: "btn btn-outline-dark" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

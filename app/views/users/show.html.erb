@@ -1,25 +1,74 @@
-<h1>マイページ</h1>
-<div>
-  <%= attachment_image_tag @user, :image, size: "200x200", fallback: "no_image.jpeg" %>
-  <p><%= @user.name %></p>
-  <P><%= link_to @user.followers.count, followers_user_path(@user) %>フォロー</P>
-  <span><%= link_to @user.followeds.count, followeds_user_path(@user) %>フォロワー</span>
-  <p><%= @user.introduction %></p>
-  <% if @user.id == current_user.id %>
-    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
-  <% else %>
-    <%= render "users/follow_system", obj: @user %>
-  <% end %>
+<div class="container-fuild my-5 py-2 bg-light border border-secondary">
+  <div class="row h4">
+    <div class="col-md-6 col-xl-4 pt-3 my-3 mx-4">
+      <div class="row justify-content-center">
+        <div class="profile-icon">
+         <%= attachment_image_tag @user, :image, size: "120x120", fallback: "no_image.jpeg" %>
+        </div>
+      </div>
+      <div class="row mt-3 justify-content-center text-center">
+        <div class="col-4">
+          <%= link_to followers_user_path(@user) do %>
+            <%= @user.followers.count %>フォロー
+          <% end %>
+        </div>
+        <div class="col-4">
+          <%= link_to followeds_user_path(@user) do %>
+            <%= @user.followeds.count %>フォロワー
+          <% end %>
+        </div>
+      </div>
+      <div class="mt-3 text-center">
+        <% if @user.id == current_user.id %>
+          <%= link_to "プロフィール", edit_user_path(@user),class: "btn btn-outline-dark btn-lg btn-block fas fa-user-cog" %>
+        <% else %>
+          <%= render "users/follow_system", obj: @user %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-5 col-xl-7 pt-3 my-3">
+      <div class="mt-2 text-left h4">
+        <%= @user.name %>
+      </div>
+      <div class="mt-4 text-left">
+        【自己紹介】
+        <p><%= @user.introduction %></p>
+      </div>
+    </div>
+  </div>
 </div>
-
-<h2>新着投稿</h2>
-<% @post_images.each do |post_image| %>
-<div>
-  <%= link_to post_image_path(post_image.id) do %>
-    <%= attachment_image_tag post_image, :image, size: "120x100" %>
-  <% end %>
-  <%= post_image.title %>
-  <%= post_image.genre.name %>
-  <%= post_image.user.name %>
+<div class="container-fuild my-5 py-2 ">
+  <h2 class="text-center border border-white text-white py-3 bg-dark"><%= @user.name %>の投稿</h2>
+  <div class="row justify-content-center">
+    <% @post_images.each do |post_image| %>
+    <div class="card col-md-5 col-xl-3 pt-3 my-3 mx-4">
+      <div class="post-index-image">
+        <%= link_to post_image_path(post_image.id) do %>
+          <%= attachment_image_tag post_image, :image, size: "300x420", class: "card-img-top"; %>
+        <% end %>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-4 col-lg-3">
+            <%= link_to post_image_path(post_image.id) do %>
+              <i class="fas fa-comment-dots fa-lg"> <%= post_image.post_comments.count %></i>
+            <% end %>
+          </div>
+          <div class="col-md-4 col-lg-3">
+            <div id="favorite_buttons_<%= post_image.id %>">
+              <%= render "favorites/favorite", obj: post_image %>
+            </div>
+          </div>
+        </div>
+        <div class="mt-3 h5">
+          <p>【タイトル】<%= post_image.title %></p>
+          <p>【ジャンル】<%= post_image.genre.name %></p>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+  <div class="row justify-content-center">
+    <%= paginate @post_images %>
+  </div>
 </div>
-<% end %>
