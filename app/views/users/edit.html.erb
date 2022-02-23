@@ -8,6 +8,7 @@
           </div>
         </div>
         <p class="my-4 text-center"> <%= f.attachment_field :image %></p>
+        <%= render "layouts/errors", obj: @user %>
         <p>【ユーザー名】<%= f.text_field :name, placeholder: "ユーザー名",class: "form-control" %></p>
         <p>【自己紹介】　<%= f.text_area :introduction, placeholder: "投稿の説明",class: "form-control", rows: 15 %></p>
         <div class="text-center">

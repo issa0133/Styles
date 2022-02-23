@@ -5,3 +5,24 @@ ja:
         last: '最後'
         previous: '前'
         next: '次'
+
+
+  activerecord:
+    attributes:
+      post_image:
+        genre: "ジャンル"
+        title: "タイトル"
+        image: "投稿画像"
+        introduction: "投稿の説明"
+
+      user:
+        name: "ユーザー名"
+        image: "アイコン"
+        introduction: "自己紹介"
+        e-mail: "メールアドレス"
+        password: "パスワード"
+        
+      genre:
+        name: "ジャンル"
+
+

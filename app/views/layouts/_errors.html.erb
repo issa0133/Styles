@@ -1,0 +1,9 @@
+<div class="input_error">
+  <ul class="list-unstyled mb-5">
+    <% if obj.errors.any? %>
+      <% obj.errors.full_messages.each do |message| %>
+        <li class="my-2"><%= message %></li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>

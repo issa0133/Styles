@@ -1,17 +1,13 @@
 <div class="container-fuild">
-  <div class="row justify-content-center mr-0">
-    <div class="col-sm-6 text-center px-0">
-      <%= link_to post_images_path, method: :get do %>
-        <h2 class="text-white border border-white bg-dark">新着投稿</h2>
-      <% end %>
+  <div class="row justify-content-center mx-0">
+    <div class="col-sm-6 px-0 py-2 text-center align-self-center border border-white bg-dark">
+      <%= link_to "新着投稿", post_images_path, class: "text-white h2" %>
     </div>
-    <div class="col-sm-6 text-center px-0">
-      <%= link_to follower_post_post_images_path, method: :get do %>
-        <h2 class="text-white border border-white bg-dark">タイムライン</h2>
-      <% end %>
+    <div class="col-sm-6 px-0 py-2 text-center align-self-center border border-white bg-dark">
+      <%= link_to "タイムライン", follower_post_post_images_path, class: "text-white h2" %>
     </div>
   </div>
-  <div class="row justify-content-center">
+  <div class="row justify-content-center px-0 mx-0">
     <% post_images.each do |post_image| %>
     <div class="card col-md-5 col-xl-3 pt-3 my-3 mx-4">
       <div class="post-index-image">
@@ -35,7 +31,7 @@
     </div>
     <% end %>
   </div>
-  <div class="row justify-content-center">
+  <div class="row justify-content-center px-0 mx-0">
     <%= paginate post_images %>
   </div>
 </div>

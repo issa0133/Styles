@@ -1,6 +1,6 @@
     <header class="container-fluid px-0">
-      <nav class="navbar navbar-lg navbar-dark bg-dark">
-        <a class="navbar-brand mx-auto", data-turbolinks="false", href="/"><%= image_tag('logo.jpg', size: '180x140') %></a>
+      <nav class="navbar navbar-lg navbar-dark bg-dark pr-3">
+        <a class="navbar-brand mx-auto", data-turbolinks="false", href="/"><%= image_tag('logo.jpg', size: '200x150') %></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerlist" aria-controls="navbarTogglerlist" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -15,10 +15,10 @@
               <%= link_to "新規投稿", new_post_image_path, class: "text-white" %>
             </li>
             <li class="h4 ml-auto">
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete,  class: "text-white" %>
+              <%= link_to "マイページ", user_path(current_user.id), class: "text-white" %>
             </li>
             <li class="h4 ml-auto">
-              <%= link_to "マイページ", user_path(current_user.id), class: "text-white" %>
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete,  class: "text-white" %>
             </li>
           <% else %>
             <li class="h4 ml-auto">
