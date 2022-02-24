@@ -21,12 +21,14 @@
             <%= attachment_image_tag post_image.user, :image, size: "60x60", fallback: "no_image.jpg" %>
           <% end %>
         </div>
-        <span><%= post_image.user.name %></span>
-        <span class="follow-button ml-auto">
-        <% if post_image.user != current_user %>
-          <%= render "users/follow_system", obj: post_image.user %>
-        <% end %>
-        </span>
+        <div class="row">
+          <span class="col-6 px-0 text-left"><%= post_image.user.name %></span>
+          <span class="col-6 px-0 text-right">
+          <% if post_image.user != current_user %>
+            <%= render "users/follow_system", obj: post_image.user %>
+          <% end %>
+          </span>
+        </div>
       </div>
     </div>
     <% end %>

@@ -27,10 +27,18 @@
 気軽に活用してもらいたいです。
 
 ## 設計書
+・https://docs.google.com/spreadsheets/d/1S5kuI0bUU8719HhH1DoHwyb6SYBxgmCXFY5MFmZaa4g/edit?usp=sharing
 
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1aUbe0DzPxthdy6m7T_9u90seM7fngMN2cBfNjw-PPxA/edit?usp=sharing
 
+##画像利用の外部サイト
+・投稿写真：https://unsplash.com
+・ヘッダーロゴ：https://www.designevo.com/jp
+
+
 ## 開発環境
 - OS：Linux/UNIX
+- ruby:2.6.3
+- rails:5.3.5

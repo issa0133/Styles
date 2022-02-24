@@ -5,7 +5,7 @@ class SearchesController < ApplicationController
     @post_image = search_for(@model, @word)
     @post_images = @post_image.page(params[:page]).reverse_order
     @genres = Genre.all
-    
+
 
   end
 
@@ -17,9 +17,9 @@ class SearchesController < ApplicationController
 
   def search_for(model, word)
     if model == "PostImage"
-      PostImage.where("title LIKE ?", "%#{word}%").order("created_at DESC")
+      PostImage.where("title LIKE ?", "%#{word}%")
     elsif model == "Genre"
-      PostImage.where(genre_id: word).order("created_at DESC")
+      PostImage.where(genre_id: word)
     else
       redirect_to request.referer
     end
