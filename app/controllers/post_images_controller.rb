@@ -31,7 +31,9 @@ class PostImagesController < ApplicationController
 
   def destroy
     @post_image = PostImage.find(params[:id])
-    @post_image.destroy
+    if current_user.id == comment.user.id
+      @post_image.destroy
+    end
     redirect_to post_images_path
 
   end

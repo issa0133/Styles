@@ -10,7 +10,9 @@ class PostCommentsController < ApplicationController
   end
   
   def destroy
-    PostComment.find_by(id: params[:id]).destroy
+    if current_user.id == comment.user.id
+      PostComment.find_by(id: params[:id]).destroy
+    end
     @post_image = PostImage.find(params[:post_image_id])
     render :post_comments
     
